@@ -32,5 +32,20 @@ public class ChessPosition {
         return col;
     }
     @Override
-    public String toString() { return String.format("%d,%d", row, col); }
+    public String toString() { return String.format("%d,%d", row, col);
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ChessPosition)) return false;
+        ChessPosition other = (ChessPosition) o;
+        return this.row == other.row && this.col == other.col;
+    }
+
+    @Override
+    public int hashCode() {
+        return 31 * row + col;
+    }
+
 }

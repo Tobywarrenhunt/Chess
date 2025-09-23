@@ -48,4 +48,21 @@ public class ChessMove {
     public String toString() {
         return String.format("%s%s", startPosition, endPosition);
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof ChessMove)) return false;
+        ChessMove other = (ChessMove) o;
+        return this.getStartPosition().equals(other.getStartPosition()) &&
+                this.getEndPosition().equals(other.getEndPosition()) &&
+                (this.getPromotionPiece() == other.getPromotionPiece());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getStartPosition(), getEndPosition(), getPromotionPiece());
+    }
+
+
 }

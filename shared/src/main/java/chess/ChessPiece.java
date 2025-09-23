@@ -9,8 +9,12 @@ import java.util.Collection;
  * signature of the existing methods.asdfasdfasdfasdfasdf
  */
 public class ChessPiece {
+    private final int row;
+    private final int col;
 
     public ChessPiece(ChessGame.TeamColor pieceColor, ChessPiece.PieceType type) {
+        this.row = row;
+        this.col = col;
 
     }
 

@@ -6,7 +6,7 @@ import java.util.Collection;
  * Represents a single chess piece
  * <p>
  * Note: You can add to this class, but you may not alter
- * signature of the existing methods.asdfasdfasdfasdf
+ * signature of the existing methods.asdfasdfasdfasdfasdf
  */
 public class ChessPiece {
 

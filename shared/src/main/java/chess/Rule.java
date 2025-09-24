@@ -15,7 +15,7 @@ public class Rule {
     }
 
     public Collection<ChessMove> getMoves(ChessBoard board, ChessPosition fromPos, ChessPiece piece) {
-        Set<ChessMove> moves = new HashSet<>(); // ✅ Use Set
+        Set<ChessMove> moves = new HashSet<>();
 
         int fromRow = fromPos.getRow();
         int fromCol = fromPos.getColumn();
@@ -40,7 +40,7 @@ public class Rule {
                     if (target.getTeamColor() != piece.getTeamColor()) {
                         moves.add(new ChessMove(fromPos, newPos, null));
                     }
-                    break; // blocked
+                    break;
                 }
 
                 if (!isSliding) break;

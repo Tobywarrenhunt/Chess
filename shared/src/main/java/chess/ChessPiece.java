@@ -88,12 +88,10 @@ public class ChessPiece {
         int row = pos.getRow();
         int col = pos.getColumn();
 
-        // Forward 1
         ChessPosition oneForward = new ChessPosition(row + direction, col);
         if (board.getPiece(oneForward) == null) {
             addPawnMove(moves, pos, oneForward, promoteRow);
 
-            // Forward 2 (only from start row)
             if (row == startRow) {
                 ChessPosition twoForward = new ChessPosition(row + 2 * direction, col);
                 if (board.getPiece(twoForward) == null) {
@@ -102,7 +100,6 @@ public class ChessPiece {
             }
         }
 
-        // Capture diagonally: left and right
         for (int dx : new int[]{-1, 1}) {
             int newCol = col + dx;
             if (newCol < 1 || newCol > 8) continue;

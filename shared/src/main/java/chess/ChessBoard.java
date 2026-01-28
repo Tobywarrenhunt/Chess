@@ -77,3 +77,5 @@ public class ChessBoard {
         return Arrays.deepHashCode(squares);
     }
 }
+
+

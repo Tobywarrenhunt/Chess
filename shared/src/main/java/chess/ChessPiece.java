@@ -55,25 +55,7 @@ public class ChessPiece {
      * @return Collection of valid moves
      */
     public Collection<ChessMove> pieceMoves(ChessBoard board, ChessPosition myPosition) {
-        if (getPieceType() == PieceType.PAWN) {
-            return getPawnMoves(board, myPosition, this);
-        }
-        
-        Rule rule = switch (getPieceType()) {
-            case BISHOP -> new Rule(true, new int[][]{{1, 1}, {-1, 1}, {-1, -1}, {1, -1}});
-            case ROOK -> new Rule(true, new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, 1}});
-            case KNIGHT ->
-                    new Rule(false, new int[][]{{2, 1}, {1, 2}, {-1, 2}, {-2, 1}, {-2, -1}, {-1, -2}, {1, -2}, {2, -1}});
-            case QUEEN ->
-                    new Rule(true, new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}, {1, 1}, {-1, 1}, {-1, -1}, {1, -1}});
-            case KING ->
-                    new Rule(false, new int[][]{{1, 0}, {-1, 0}, {0, 1}, {0, -1}, {1, 1}, {-1, 1}, {-1, -1}, {1, -1}});
-            default -> null;
-        };
-        if (rule != null){
-            return rule.getMoves(board, myPosition, this);
-        }
-        return List.of();
+        return null;
     }
 
     private Collection<ChessMove> getPawnMoves(ChessBoard board, ChessPosition myPosition, ChessPiece chessPiece) {

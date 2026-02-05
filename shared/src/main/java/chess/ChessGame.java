@@ -50,7 +50,16 @@ public class ChessGame {
      * startPosition
      */
     public Collection<ChessMove> validMoves(ChessPosition startPosition) {
-        throw new RuntimeException("Not implemented");
+        if (piece == null) {
+            return null;
+        }
+
+        for (ChessMove move : potentialMoves) {
+            if (isSafeMove(, piece.getTeamColor())) {
+            }
+        }
+
+        return legalMoves;
     }
 
     /**

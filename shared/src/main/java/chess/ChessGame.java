@@ -14,7 +14,9 @@ public class ChessGame {
     private ChessBoard board;
 
     public ChessGame() {
-
+        this.board = new ChessBoard();
+        this.board.resetBoard();
+        this.teamTurn = TeamColor.WHITE;
     }
 
     /**
@@ -57,10 +59,24 @@ public class ChessGame {
         }
 
         Collection<ChessMove> pieceMoves = piece.pieceMoves(board, startPosition);
+        Collection<ChessMove> legalMoves = new java.util.ArrayList<>();
 
-        return pieceMoves;
+        for (ChessMove move : pieceMoves) {
+            ChessPiece originalStart = board.getPiece(move.getStartPosition());
+            ChessPiece originalEnd = board.getPiece(move.getEndPosition());
 
+            board.addPiece(move.getEndPosition(), originalStart);
+            board.addPiece(move.getStartPosition(), null);
 
+            if (!isInCheck(piece.getTeamColor())) {
+                legalMoves.add(move);
+            }
+
+            board.addPiece(move.getStartPosition(), originalStart);
+            board.addPiece(move.getEndPosition(), originalEnd);
+        }
+
+        return legalMoves;
 
     }
 
@@ -87,6 +103,7 @@ public class ChessGame {
         }
 
         throw new InvalidMoveException();
+
 
     }
 
@@ -217,4 +234,25 @@ public class ChessGame {
     public ChessBoard getBoard() {
         return board;
     }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        ChessGame chessGame = (ChessGame) o;
+        // Two games are equal if it's the same team's turn and the boards are equal
+        return teamTurn == chessGame.teamTurn &&
+                java.util.Objects.equals(board, chessGame.board);
+    }
+
+    @Override
+    public int hashCode() {
+        // Generate a hash based on the turn and the board
+        return java.util.Objects.hash(teamTurn, board);
+    }
+
+
 }
+
+
+
